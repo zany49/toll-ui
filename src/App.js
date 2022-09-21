@@ -11,7 +11,7 @@ function App() {
   const [data,setData] = useState([]);
   const [edata,setEdata] = useState([]);
   const [search,setSearch] = useState("");
-  const [selectval,setSelectval] = useState(['ALL'])
+  const [selectval,setSelectval] = useState('ALL')
   // useEffect(()=>{
   //   backtovec()
   // },[backtovec])
