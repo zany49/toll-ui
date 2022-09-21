@@ -66,21 +66,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
         }
     }
 
-  //   const handleval = (e)=>{
-       
-  //     console.log(field,field1,field2,field3,field.single === undefined ,field.single !== undefined,((field.single === undefined ||field.single !== undefined) && (field.return === undefined || field.return !== undefined )) )
-  //     if(field.vehicleType === "Car/Jeep/Van"&& ((field.single === undefined ||field.return === undefined) || (field.single !== undefined || field.return !== undefined ))){
-  //       setField((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  //     }else if(field1.vehicleType === "LCV"&& ((field1.single === undefined ||field1.return === undefined) || (field1.single !== undefined || field1.return !== undefined ))){
-  //       setField1((prev) => ({ ...prev, [e.target.name]: e.target.value }));    
-  //     }else if(field2.vehicleType === "Truck/Bus"&& ((field2.single === undefined ||field2.return === undefined) || (field2.single !== undefined || field2.return !== undefined ))){
-  //       setField2((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  //     }else if (field3.vehicleType === "Heavy vehicle"&& ((field3.single === undefined ||field3.return === undefined) || (field3.single !== undefined || field3.return !== undefined )) ){
-  //       setField3((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  //     }else{
-  //       alert("error")
-  //     }
-  // }
+
     const handleChange1 = (e)=>{
      
       if(e.target.name ==="vehicleType" && e.target.value === "Car/Jeep/Van"){

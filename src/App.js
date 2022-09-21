@@ -69,9 +69,9 @@ function App() {
       data.tollName.includes(search.toLocaleLowerCase()))
     }else{
       return data.filter((data)=>{
-      if (selectval == 'ALL') {
+      if (selectval === 'ALL') {
       return data.entry.vehicleNumber.includes(search.toLocaleUpperCase()) || data.entry.tollName.includes(search.toLocaleLowerCase())
-     }else if(data.entry.tollName == selectval ){
+     }else if(data.entry.tollName === selectval ){
       return data.entry.vehicleNumber.includes(search.toLocaleUpperCase()) &&  data.entry.tollName.includes(selectval.toLocaleLowerCase())
      } 
     })
