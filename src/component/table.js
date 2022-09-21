@@ -11,8 +11,8 @@ const Table = ({data,page,edata,viewTollmain})=>{
   const handleDel = (id)=>{
 
       console.log('id-->',id)
-      var {tdetail} = JSON.parse(localStorage.getItem("tollDetails"));
-       const filtered = tdetail.filter(item => item.id !== id);
+      var extdata = JSON.parse(localStorage.getItem("tollDetails"));
+       const filtered = extdata.tdetail.filter(item => item.id !== id);
       console.log("fil--->",filtered)
       var details = {}
       var tdetail =  filtered 
