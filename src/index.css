@@ -1,0 +1,251 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html,
+body.active-modal {
+  overflow-y: hidden;
+}
+
+
+.width_340 {
+  width: 100%;
+}
+
+.width_300 {
+  width: 94%;
+}
+
+.btn-modal {
+  padding: 5px 11px;
+  margin: 12px;
+  border-radius: 6px;
+  border: 15px;
+  color: white;
+  background-color: #2a9df4;
+
+}
+
+.btn-clear{
+  padding: 5px 11px;
+  margin: 12px;
+  border-radius: 6px;
+  border: 15px;
+  color: white;
+  background-color: #2a9df4;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+  background-color: #2a9df4;
+  border: 1px;
+  border-radius: 4px;
+  height: 35px;
+  color: white;
+}
+
+
+.DisplayFlex{
+  display: flex;
+}
+
+.margin_8{
+  margin: 8px;
+}
+
+.margin_5{
+  margin: 5px;
+}    
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.AlignItem_center{
+  align-items: center;
+}
+
+.justifycontent_spacebetween{
+  justify-content: space-between;
+}
+
+.title_head{
+  border-bottom: 1px solid #E5E9EB;
+    padding: 20px;
+}
+
+.Table_wrapper table{
+  margin: 0px;
+  border-spacing: 0px;
+  width: 100%;
+}
+.Table_wrapper table thead th{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  background-color: #F5F5F5;
+  color: #252C32;
+  padding: 8px 16px;
+  text-align: left;
+  border-bottom: 1px solid #E5E9EB;
+}
+.Table_wrapper table tbody td{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #252C32;
+  padding:16px;
+  border-bottom: 1px solid #E5E9EB;
+}
+
+.nosubmit {
+ 
+  width: 260px;
+  height: 40px;
+  border: 1px solid #F5F5F5;
+  border-radius: 21px;
+  display: block;
+  position: relative;
+  margin-left: 60px;
+  top: 12px;
+  padding: 9px 4px 9px 40px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+
+.fil-btn{
+  background-color: white;
+  border: none;
+  width: 2px;
+  left: 66px;
+  position: relative;
+}
+
+.btn-delete{
+  background-color: white;
+  border: none;
+  width: 2px;
+  height: 10px
+}
+
+.titlemain{
+  padding: 2px;
+  margin-right: 17px;
+}
+
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  position: fixed;
+  top: 122px;
+  left: 124px;
+}
+
+.list {
+  box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+  /* border: 1px solid #ccc; */
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  left: 69px;
+  top: 15px;
+  width: auto;
+  display: inline-block;
+}
+.list-item {
+  padding: 8px;
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+.list-item:hover,
+.list-item:active {
+  background-color: #f3f3f3;
+}
+
+.input_form {
+  font-family: "Roboto", sans-serif;
+  background: #ffffff;
+  border: 1px solid #dde2e4;
+  border-radius: 6px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: #252c32;
+  padding: 0px 16px;
+  outline: unset;
+}
+
+.input_form::placeholder {
+  color: #9aa6ac;
+}
+
+
+.btn-modle-in{
+  
+  padding: 5px 11px;
+  margin: 12px;
+  border-radius: 6px;
+  border: 15px;
+  color: white;
+  background-color: #2a9df4;
+  width: 90%;
+  height: 40px;
+  position: relative;
+  left: 20px;
+
+}
+
+
+.align_left{
+  position: relative;
+  left: 511px;
+  top: 10px;
+}
+
