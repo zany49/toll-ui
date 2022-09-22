@@ -321,7 +321,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                       setEntry((prev) => ({ ...prev,enter: false,return:true}));
                       console.log("entered data--->",entry)
                       var item = {entry,traffiAmount:val-20,endate:dateMDY,time:date1,returnval : true}
-                      alert("discounted amounnt-->" + item.traffiAmount)
+                      alert("discounted amounnt--> " + item.traffiAmount)
                       extdata.tdetail.push(item);
                       localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
                       console.log("datas---->",extdata)
@@ -330,7 +330,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                      }else{
                       setEntry((prev) => ({ ...prev,enter: false,return:true}));
                       var item = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : true}
-                      console.log("nodis--->",item)
+                      console.log("no discount for return--->" + item.traffiAmount)
                       alert("nodis")
                       extdata.tdetail.push(item);
                       localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
@@ -374,7 +374,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
               <div>
 
                 <small>Select Toll Name</small>
-              <select className="input_form width_340" name="tollName" onChange={handleEntry}>
+              <select className="input_form width_340" name="tollName" onChange={handleEntry} required>
               <option>Select Toll</option>
               {
                 data.map((e,i)=>{
@@ -384,7 +384,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 </select>
                 
                 <small>Select Vehicle Type</small>
-              <select className="input_form width_340" name="vehicleType" onChange={handleEntry} >
+              <select className="input_form width_340" name="vehicleType" onChange={handleEntry} required>
                 <option>Select Vehicle Type</option>
                 <option value="Car/Jeep/Van">Car/Jeep/Van</option>
                 <option value="LCV">LCV</option>
@@ -393,7 +393,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 </select>
 
                 <small>Enter Vehicle Number</small>
-                <input className="input_form width_300" placeholder="Enter Vehicle Number" name="vehicleNumber" onChange={handleEntry}/>
+                <input className="input_form width_300" placeholder="Enter Vehicle Number" name="vehicleNumber" onChange={handleEntry} required/>
 
                 <small> Traffi Amount</small>
                 <input className="input_form width_300" placeholder="Enter Traffi Amount" name="straffiAmount" value={val} onChange={(e)=>setVal(e.target.value)} disabled/>
@@ -427,8 +427,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 <option value="Truck/Bus">Truck/Bus</option>
                 <option value="Heavy vehicle">Heavy Vehicle</option>
                 </select>
-                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"    onChange={handleval} name="single"/>
-                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval} name="return"/>
+                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"    onChange={handleval} name="single" required/>
+                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval} name="return" required/>
                 </div>
 
                 <div className="DisplayFlex margin_8">
@@ -439,8 +439,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 <option value="Truck/Bus">Truck/Bus</option>
                 <option value="Heavy vehicle">Heavy Vehicle</option>
                 </select>
-                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"   onChange={handleval1} name="single"/>
-                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval1} name="return"/>
+                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"   onChange={handleval1} name="single" required/>
+                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval1} name="return" required/>
                 </div>
 
 
@@ -452,8 +452,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 <option value="Truck/Bus">Truck/Bus</option>
                 <option value="Heavy vehicle">Heavy Vehicle</option>
                 </select>
-                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"   onChange={handleval2} name="single"/>
-                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval2} name="return"/>
+                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"   onChange={handleval2} name="single" required/>
+                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"  onChange={handleval2} name="return" required/>
                 </div>
 
 
@@ -465,8 +465,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 <option value="Truck/Bus">Truck/Bus</option>
                 <option value="Heavy vehicle">Heavy Vehicle</option>
                 </select>
-                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"  onChange={handleval3}name="single"/>
-                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"onChange={handleval3} name="return"/>
+                <input type="number" className="input_form width_300 margin_5" placeholder="Enter Single Journey Amount"  onChange={handleval3}name="single" required/>
+                <input  type="number" className="input_form width_300 margin_5" placeholder="Enter Return Journey Amount"onChange={handleval3} name="return" required />
                 </div>
 
                 <button className="btn-modle-in">Add details</button>
