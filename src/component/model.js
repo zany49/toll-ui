@@ -6,13 +6,16 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
     const [modal, setModal] = useState(false);
 
     const [toll,setToll] =useState("");
-    const [tolldrop,setTolldrop] = useState([])
-    const [val,setVal] = useState("")
+    const [tollval,setTollval] = useState([])
+    const [val,setVal] = useState()
+    const [ reval,setReval] = useState("")
     const [entry, setEntry] = useState({
       tollName:'',
       vehicleType: '',
       vehicleNumber: '',
-      dateandtime: new Date()
+      dateandtime: new Date(),
+      enter:false,
+      return:false
     })
 
     
@@ -65,7 +68,6 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
           setField3((prev) => ({ ...prev, [e.target.name]: e.target.value }));
         }
     }
-
 
     const handleChange1 = (e)=>{
      
@@ -191,75 +193,156 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
   }
 
 
-      const handleEntry =(e)=>{
-        console.log(data)
-        const newdata= []
+          const handleEntry =(e)=>{
+            console.log(data)
+            const newdata= []
 
-            if(e.target.name === "vehicleType"){
-              console.log(entry.tollName)
-              for(let i=0; i<data.length; i++){
-                  if(data[i].tollName === entry.tollName ){
-                    if(e.target.name === "vehicleType"&& e.target.value === "Car/Jeep/Van" ){
-                    newdata.push(data[i].vehicalFare.field)
-                    }else if(e.target.name === "vehicleType"&& e.target.value === "LCV" ){
-                      newdata.push(data[i].vehicalFare.field1)
-                      }else if(e.target.name === "vehicleType"&& e.target.value === "Truck/Bus" ){
-                        newdata.push(data[i].vehicalFare.field2)
-                        }else if(e.target.name === "vehicleType"&& e.target.value === "Heavy vehicle" ){
-                          newdata.push(data[i].vehicalFare.field3)
-                          }else{
-                            console.log("data")
-                          }
-                  }
+                if(e.target.name === "vehicleType"){
+                  console.log(entry.tollName)
+                  for(let i=0; i<data.length; i++){
+                      if(data[i].tollName === entry.tollName ){
+                        if(e.target.name === "vehicleType"&& e.target.value === "Car/Jeep/Van" ){
+                        newdata.push(data[i].vehicalFare.field)
+                        }else if(e.target.name === "vehicleType"&& e.target.value === "LCV" ){
+                          newdata.push(data[i].vehicalFare.field1)
+                          }else if(e.target.name === "vehicleType"&& e.target.value === "Truck/Bus" ){
+                            newdata.push(data[i].vehicalFare.field2)
+                            }else if(e.target.name === "vehicleType"&& e.target.value === "Heavy vehicle" ){
+                              newdata.push(data[i].vehicalFare.field3)
+                              }else{
+                                console.log("data")
+                              }
+                      }
+                    }
+                
+                  
+                  setVal(newdata[0].single)
+                  setReval(newdata[0].return)
+                  setTollval(newdata)
+                  console.log("here---->1")
                 }
-              console.log(newdata[0].single)
-              setVal(newdata[0].single)
-            }
-        
-        
-        
-        if(e.target.name === "vehicleNumber"){
-          setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value.toUpperCase() }));
-        }else if(e.target.name === "tollName"){
-          setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-        }else if(e.target.name === "vehicleType"){
-          setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-        }
-        else{
-          setEntry((prev) => ({ ...prev, [e.target.name]: setVal(newdata[0].single) }));
-        }
-        
-      }
+
+                  console.log("tooll->>>>",tollval)
+          
+                if(e.target.name === "vehicleNumber"){
+                  console.log("here---->4")
+                  var extdata = JSON.parse(localStorage.getItem("vehicalEntry"));
+                  console.log("newdata[0].single,newdata[0].return",extdata)
+                  const filtered = extdata.tdetail.filter(item => {
+                    if( e.target.value === item.entry.vehicleNumber && item.returnval === false ) {
+                      console.log("item--->",item)
+                      return item
+                    }
+                  })
+                  console.log("filfrom num",filtered.length%2===1)
+                  if(filtered.length === 0 ){
+                     setVal(tollval[0].single) 
+                     console.log("newdata[0].single",tollval.single)
+                  }
+                  if(filtered.length === 1 ){
+                    setVal(tollval[0].return) 
+                    console.log("newdata[0].single",tollval.return)
+                 }
+                  setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value.toUpperCase() }));
+                }else if(e.target.name === "tollName"){
+                  console.log("here---->7")
+                  setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+                }else if(e.target.name === "vehicleType"){
+                  console.log("here---->8")
+                  setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+                }
+                else{
+                  console.log("here---->9")
+                  setEntry((prev) => ({ ...prev, [e.target.name]: setVal(newdata[0].single) }));
+                }
+              }
 
       const handleSubmitentry = (e) =>{
         e.preventDefault()
-        console.log("entry---->",{entry,traffiAmount:val});
+        console.log("entry---->",{entry,traffiAmount:val,returnval : false});
         if (localStorage.getItem("vehicalEntry") === null) {
           var details = {}
           let date = (new Date())
           let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
           let date1 = String((new Date())).split(' ')[4]
           
-            var tdetail = [{entry,traffiAmount:val,endate:dateMDY,time:date1}]
+            var tdetail = [{entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : false}]
                details.tdetail= tdetail
               console.log("data---->",details)
               localStorage.setItem('vehicalEntry', JSON.stringify(details));
               viewEntriesmain()
                toggleModal()
               }else{
-      
+                
+                   
+                var date = (new Date())
+                var dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                var date1 = String((new Date())).split(' ')[4]
+             
                 var extdata = JSON.parse(localStorage.getItem("vehicalEntry"));
-                let date = (new Date())
-                let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-                let date1 = String((new Date())).split(' ')[4]
-                var item = {entry,traffiAmount:val,endate:dateMDY,time:date1}
+             
+                var entreddata = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : false}
+
+
+                const filtered = extdata.tdetail.filter(item => {
+                  if(entreddata.entry.tollName===item.entry.tollName && entreddata.entry.vehicleNumber===item.entry.vehicleNumber&&entreddata.entry.vehicleType===item.entry.vehicleType&& item.returnval === false ){
+                    console.log("item--->",item)
+                    return item
+                  }
+ 
+                
+                });
+                console.log("filtered-->",filtered,filtered.length)
+
+                
+              
+            
+                if(filtered.length===0){
+                  setEntry((prev) => ({ ...prev,enter: true,return:true}));
+                  console.log("entered data--->",entry)
+                var item = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : false}
+                console.log("new entry--->",item)
                  extdata.tdetail.push(item);
                  localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
                  console.log("datas---->",extdata)
                  viewEntriesmain()
                  toggleModal()
+                }
+
+                if(filtered.length === 1){
+                  console.log("filtered")
+                   if(entreddata.endate === filtered[0].endate){
+                    console.log("filtered")
+                    var dtsplt = filtered[0].time.split(":")[0]+ '.' +  filtered[0].time.split(":")[1]
+                    var dtsplt2 = entreddata.time.split(":")[0]+ '.' + entreddata.time.split(":")[1]
+                    var timeMath = Math.abs(dtsplt-dtsplt2)
+                    console.log(" time bar---->",timeMath,timeMath <= 0.99)
+                    if(timeMath <= 0.99 ){
+                      setEntry((prev) => ({ ...prev,enter: false,return:true}));
+                      console.log("entered data--->",entry)
+                      var item = {entry,traffiAmount:val-20,endate:dateMDY,time:date1,returnval : true}
+                      alert("discounted amounnt-->" + item.traffiAmount)
+                      extdata.tdetail.push(item);
+                      localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
+                      console.log("datas---->",extdata)
+                      viewEntriesmain()
+                      toggleModal()
+                     }else{
+                      setEntry((prev) => ({ ...prev,enter: false,return:true}));
+                      var item = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : true}
+                      console.log("nodis--->",item)
+                      alert("nodis")
+                      extdata.tdetail.push(item);
+                      localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
+                      console.log("datas time bar---->",extdata)
+                      viewEntriesmain()
+                      toggleModal()
+                     }
+                }
+                 
               }
       }
+    }
       
 
 
@@ -271,6 +354,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
     setField1('')
     setField2('')
     setField3('')
+    setVal('')
+    setReval('')
   };
 
   return (
@@ -310,9 +395,10 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                 <small>Enter Vehicle Number</small>
                 <input className="input_form width_300" placeholder="Enter Vehicle Number" name="vehicleNumber" onChange={handleEntry}/>
 
-                <small>Traffi Amount</small>
-                <input className="input_form width_300" placeholder="Enter Traffi Amount" name="traffiAmount" value={val} onChange={(e)=>setVal(e.target.value)} disabled/>
-
+                <small> Traffi Amount</small>
+                <input className="input_form width_300" placeholder="Enter Traffi Amount" name="straffiAmount" value={val} onChange={(e)=>setVal(e.target.value)} disabled/>
+                
+      
                 <button className="btn-modle-in">Add Entry</button>
               </div>
               </form>

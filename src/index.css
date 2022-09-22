@@ -164,6 +164,10 @@ body.active-modal {
   left: 66px;
   position: relative;
 }
+.page-wrapper{
+  width: auto;
+  height: auto;
+}
 
 .btn-delete{
   background-color: white;
@@ -245,7 +249,7 @@ body.active-modal {
 
 .align_left{
   position: relative;
-  left: 511px;
+  left: 360px;
   top: 10px;
 }
 

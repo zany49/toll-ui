@@ -11,7 +11,7 @@ function App() {
   const [data,setData] = useState([]);
   const [edata,setEdata] = useState([]);
   const [search,setSearch] = useState("");
-  const [selectval,setSelectval] = useState('ALL')
+  const [selectval,setSelectval] = useState(['ALL'])
   // useEffect(()=>{
   //   backtovec()
   // },[backtovec])
@@ -69,9 +69,9 @@ function App() {
       data.tollName.includes(search.toLocaleLowerCase()))
     }else{
       return data.filter((data)=>{
-      if (selectval === 'ALL') {
+      if (selectval == 'ALL') {
       return data.entry.vehicleNumber.includes(search.toLocaleUpperCase()) || data.entry.tollName.includes(search.toLocaleLowerCase())
-     }else if(data.entry.tollName === selectval ){
+     }else if(data.entry.tollName == selectval ){
       return data.entry.vehicleNumber.includes(search.toLocaleUpperCase()) &&  data.entry.tollName.includes(selectval.toLocaleLowerCase())
      } 
     })
@@ -92,6 +92,7 @@ function App() {
 
   return (
     <>
+    <div className="page-wrapper">
     <p className="title_head">Toll Management Application</p>
    
     {vehical&&
@@ -134,6 +135,7 @@ function App() {
 
       )
      }
+     </div>
     </>
   );
 }
