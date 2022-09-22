@@ -225,7 +225,8 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
             
           
                 if(e.target.name === "vehicleNumber"){
-            
+                  
+                  setEntry((prev) => ({ ...prev, [e.target.name]: e.target.value.toUpperCase() }));
                   var extdata = JSON.parse(localStorage.getItem("vehicalEntry"));
             
                   const filtered = extdata.tdetail.filter(item => {
@@ -321,7 +322,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                       setEntry((prev) => ({ ...prev,enter: false,return:true}));
               
                       var item = {entry,traffiAmount:val-20,endate:dateMDY,time:date1,returnval : true}
-                      alert("discounted amounnt--> " + item.traffiAmount)
+                      alert("discounted amounnt for return before 1hr from return fare--> " + item.traffiAmount)
                       extdata.tdetail.push(item);
                       localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
                       
@@ -331,7 +332,7 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                       setEntry((prev) => ({ ...prev,enter: false,return:true}));
                       var item = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : true}
                
-                      alert("nodis")
+                      alert("no discount fare expired")
                       extdata.tdetail.push(item);
                       localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
                 
