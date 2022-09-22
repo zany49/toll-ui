@@ -18,7 +18,7 @@ function App() {
   const  viewTollmain = ()=>{
     if(JSON.parse(localStorage.getItem("tollDetails"))!== null){
       var extdata = JSON.parse(localStorage.getItem("tollDetails"))
-      console.log("data",extdata.tdetail)
+
       setData(extdata.tdetail)
     }else{
       console.log("error")
@@ -27,7 +27,7 @@ function App() {
   const viewToll=()=>{
     if(JSON.parse(localStorage.getItem("tollDetails"))!== null){
       var extdata = JSON.parse(localStorage.getItem("tollDetails"))
-      console.log("data",extdata.tdetail)
+     
       setData(extdata.tdetail)
       setVehical(!vehical)
       setToll(!toll)
@@ -41,7 +41,7 @@ function App() {
   const viewEntriesmain = ()=>{
     if(JSON.parse(localStorage.getItem("vehicalEntry"))!== null){
       var extdata = JSON.parse(localStorage.getItem("vehicalEntry"))
-    console.log("data list-->",extdata.tdetail)
+   
     setEdata(extdata.tdetail)
   }
   }
@@ -50,7 +50,7 @@ function App() {
   const viewEntries=()=>{
     if(JSON.parse(localStorage.getItem("vehicalEntry"))!== null){
       var extdata = JSON.parse(localStorage.getItem("vehicalEntry"))
-    console.log("data list-->",extdata.tdetail)
+
     setEdata(extdata.tdetail)
     setVehical(!vehical)
     setToll(!toll)
@@ -62,7 +62,7 @@ function App() {
   }
 
   const fil = (data,name)=>{
-    console.log("setSelectval--->",data,selectval)
+   
   
     if(name === "toll"){
       return data.filter((data)=> 
