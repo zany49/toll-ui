@@ -339,7 +339,18 @@ const Model = ({title,data,viewEntriesmain,viewTollmain})=>{
                       viewEntriesmain()
                       toggleModal()
                      }
-                }
+                }else{
+               
+                  setEntry((prev) => ({ ...prev,enter: false,return:true}));
+                  var item = {entry,traffiAmount:val,endate:dateMDY,time:date1,returnval : true}
+           
+                  alert("nodis")
+                  extdata.tdetail.push(item);
+                  localStorage.setItem('vehicalEntry', JSON.stringify(extdata));
+            
+                  viewEntriesmain()
+                  toggleModal()
+          }
                  
               }
       }
